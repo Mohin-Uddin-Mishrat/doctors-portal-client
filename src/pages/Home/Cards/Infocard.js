@@ -1,7 +1,6 @@
 import React from 'react';
 const Infocard = ({data}) => {
     const {name, icon , description, bgClass } = data ;
-    console.log(data)
     return (
         <div>
             <div className={`p-6 card card-side  shadow-xl ${bgClass}`}>
