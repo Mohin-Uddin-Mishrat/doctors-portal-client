@@ -3,7 +3,8 @@ import DashboardLayout from "../../layout/DashboardLayout";
 import Main from "../../layout/Main";
 import About from "../../pages/About/About";
 import Appoinment from "../../pages/Appoinment/Appoinment";
-import Dashboard from "../../pages/Dashboard";
+import Dashboard from "../../pages/Dashboard/Dashboard";
+import MyAppointment from "../../pages/Dashboard/MyAppointment";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login";
 import Sighnup from "../../pages/Sighnup";
@@ -48,7 +49,7 @@ const router =createBrowserRouter([
         children:[
         {
             path:'/dashboard',
-            element: <Dashboard></Dashboard>
+            element: <MyAppointment></MyAppointment>
         }
        ]
     
