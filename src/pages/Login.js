@@ -2,13 +2,23 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/Context';
+import useToken from '../Hook/useToken';
 
 const Login = () => {
     const [error, seterror, googlePopup] = useState('');
     const {sighnIn} = useContext(AuthContext);
+    
+    
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
+    const [loginEmail, setLoginEmail] = useState('');
+    const [token] = useToken(loginEmail);
+
+    if(token){
+        navigate(from, {replace: true});
+
+    }
 
 
      const handleGoogle=()=>{
@@ -21,8 +31,7 @@ const Login = () => {
     const handleSighnin = (data)=>{
         sighnIn(data.email, data.password)
         .then(result =>{
-            const user = result.user;
-            navigate(from, {replace: true});
+            setLoginEmail(data.email);
 
           
         }).catch(error => seterror(error.message));
